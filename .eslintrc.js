@@ -21,10 +21,14 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'eol-last': 0,
+    // allow paren-less arrow functions
+    'arrow-parens': 0,
     // allow async-await
-    'generator-star-spacing': 'off',
+    'generator-star-spacing': 0,
+    // 禁止空格和 tab 的混合缩进
+    'no-mixed-spaces-and-tabs': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'eol-last': 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
 }
