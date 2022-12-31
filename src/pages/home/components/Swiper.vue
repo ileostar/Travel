@@ -2,8 +2,9 @@
   <div class="wrapper">
     <swiper :options="swiperOption"
             ref="mySwiper"
-            @someSwiperEvent="callback">
-      <swiper-slide v-for="item of swiperList"
+            @someSwiperEvent="callback"
+            v-if="showSwiper">
+      <swiper-slide v-for="item of list"
                     :key="item.id">
         <img class="swiper-img"
              :src="item.imgUrl" />
@@ -17,28 +18,20 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
         pagination: '.swiper-pagination',
         loop: true
-      },
-      swiperList: [{
-        id: '0001',
-        imgUrl: 'https://img.zcool.cn/community/014b705b35b3d0a80121b9941c1c0a.jpg@1280w_1l_2o_100sh.jpg'
-      }, {
-        id: '0002',
-        imgUrl: 'https://img.zcool.cn/community/01d75f5b35b3caa80121b994bdb848.jpg@1280w_1l_2o_100sh.jpg'
-      }, {
-        id: '0003',
-        imgUrl: 'https://img.zcool.cn/community/01f01e5b35b3d3a80121b99495b03c.jpg@1280w_1l_2o_100sh.jpg'
       }
-      ]
     }
   },
   computed: {
-    swiper () {
-      return this.$refs.mySwiper.swiper
+    showSwiper () {
+      return this.list.length
     }
   },
   mounted () {
@@ -51,18 +44,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.wrapper >>> .swiper-pagination-bullet-active {
-  background: #fff !important;
-}
-
-.wrapper {
-  overflow: hidden;
-  width: 100%;
-  height: 0;
-  padding-bottom: 25%;
-
-  .swiper-img {
-    width: 100%;
-  }
-}
+.wrapper >>> .swiper-pagination-bullet-active
+  background: #fff !important
+.wrapper
+  overflow: hidden
+  width: 100%
+  height: 0
+  padding-bottom: 25%
+  .swiper-img
+    width: 100%
 </style>
