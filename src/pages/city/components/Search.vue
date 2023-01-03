@@ -1,8 +1,15 @@
 <template>
-  <div class="search">
+  <div>
+    <div class="search">
     <input class="search-input"
            type="text"
            placeholder="输入城市名或拼音">
+  </div>
+  <div class="search-content">
+    <ul>
+      <li></li>
+    </ul>
+  </div>
   </div>
 </template>
 
@@ -15,6 +22,7 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
 .search
+  position relative
   height: 0.72rem
   padding: 0 0.1rem
   background: $bgColor
@@ -27,4 +35,9 @@ export default {
     text-align: center
     border-radius: 0.06rem
     color: #666
+  .search-content
+    position absolute
+    top 1.58rem
+    left 0
+    
 </style>
